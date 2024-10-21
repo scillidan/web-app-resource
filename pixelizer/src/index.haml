@@ -1,0 +1,148 @@
+-# Pixel art no element builder markup
+<canvas id="canvas" style="border:2px solid black;" width="1000" height="1000">
+</canvas>
+.app
+    .zoom
+        .pan
+            .scene#scene
+                .pcount
+                    %h5 Pixel Count
+                    
+                    %span.c 0
+                    %span / 1000
+                    %p Because it's not built in canvas, will start to lag when drawing after a few 100 pixels
+                .row
+                .col
+                .frame.frame1
+                    .pixels
+    -# Side menu
+    %aside.menu
+        -# Pixelizer main logo
+        .menu_logo
+            %img{:src => 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/pixelizer_logo.png'}
+        -# Main scene options    
+        .menu_options
+            %h2 Scene options
+            %p You must set these first otherwise your drawing will be deleted
+            -# Pixel sizing options
+            .menu_options__psize
+                %h3 Pixel size
+                %h3.abs Scene name
+                %input.w{:type => 'number'}
+                %input.name{:value => 'My no div pixel art'}
+            -# Scene sizing options 
+            
+            .menu_options__ssize
+                %h3 Scene size
+                %button.s.active S
+                %button.m M
+                %button.l L
+                %button.xl XL
+                %input.w{:type => 'hidden'}
+                %input.inactive.h{:type => 'hidden'}
+            -# Scene bg color options        
+            .menu_options__bcolor
+                %h3 Scene background
+                %input#bgpicker
+                .coutput #2f303e
+        -# Scene effects
+        .menu_effects
+            %h2 Scene effects
+            %p Add dithering and reflections to your creation
+            -# Scene reflection
+            .menu_effects__reflect
+                %label{:for => 'reflect'}
+                    %h4 
+                        %i.fa.fa-image
+                        Reflect
+                %input#reflect{:type => 'checkbox'}
+        -# Scene animation options         
+        .menu_animations
+            %h2 Scene animations
+            %p Add simple animations to your creation
+            -# Scene animation selection
+            .menu_animations__animation
+                %h4 Select animation
+                %select
+                    %option No animation
+                    %option Spin
+                    %option Bounce
+                    %option Wobble
+    -# Top tool bar  
+    .overlay
+    %nav.tools
+        -# Scene zoom slider
+        .tools_zoom 
+            %h5 Zoom level
+            %input{:type => 'range', :value => '0', :min => '10', :max => '30'}
+            .tip
+                x 1.0
+        -# Scene grid icon 
+        .tools_grid
+            %i.fa.fa-th
+            .tipt Toggle grid [g]
+        -# Scene pan icon 
+        .tools_pan.inactive
+            %i.fa.fa-arrows-alt
+            .tipt Toggle pan [Hold space]
+        -# Scene save icon 
+        .tools_center.inactive
+            %i.fa.fa-bullseye
+            .tipt Re center [c]
+        .tools_symx.inactive
+            %i.fa.fa-arrows-h
+            .tipt Symetry X [x]
+        .tools_symy.inactive
+            %i.fa.fa-arrows-v
+            .tipt Symetry Y [Y]
+        -# Scene export to codepen button
+        .tools_export_code
+        -# Scene export as png button
+        .tools_export_png
+            %a 
+                Export as image
+    -# Scene color picker
+    .picker
+        %h2 
+            %i.fa.fa-paint-brush
+            Color Selector
+        %input#colorpicker
+        .col
+        .output #ffffff
+        .pick
+            .tipt Pick color [p]
+            %i.fa.fa-crosshairs
+.pickOverlay
+.keyframes
+    //.playhead
+    .keyframes_control
+        %h4 Timeline
+        .controls
+            %h4 Onion skin:
+            .onion
+                %input#onion{:type => 'checkbox', :checked => 'checked'}
+                
+            %h4 FPS:
+            %input.f{:value => '30'}
+            %h4 Controls:
+            .start
+                %i.fa.fa-fast-backward
+            .prev
+                %i.fa.fa-step-backward
+            .play
+                %i.fa.fa-play
+            .next
+                %i.fa.fa-step-forward
+            .end
+                %i.fa.fa-fast-forward
+            
+    .frames
+        .o
+        .wrap
+            .frame.activeF.frame1{'data-frame' => 1}
+                .frameTitle
+                    Frame #1
+                %i.fa.fa-trash
+                %i.fa.fa-copy
+    .add
+        +
